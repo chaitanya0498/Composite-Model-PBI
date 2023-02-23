@@ -11,6 +11,7 @@ PRE-REQUISITI
 2. Split FACT into 2 (HOT + COLD)
    - based on DATE << getdate() -120 >>
 3. Add Relations with DIM Tables
+4. Create Calculated Column for DATE (because DB doesn't have DATE)
 
 = 2 FACT TABLES (COLD + HOT) and 4 DIM Tables (All in DIRECT QUERY)
 
