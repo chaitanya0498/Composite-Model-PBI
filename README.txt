@@ -34,10 +34,17 @@ Create visualisations on our new structure, take screenshots
 Compare screenshots (performance analyzer)
 
 
-VOGLIAMO VISUALIZZARE 
-1. somma dei costi e recavi
-2. a quanti progetti è assegnato ogni project manager?
- 
+
+VISUALIZZAZIONI
+
+(sicuramente)
+Guadagno per progetto (bisogna poterlo visualizzare in base a mese ed anno con filtri);
+Ogni project manager a quanti progetti è associato (count), inserire drill-through per vedere nello specifico i progetti associati ad uno specifico project manager; 
+
+(da valutare)
+Contare il numero di risorse coinvolte in un progetto;Project manager ordinati in base al guadagno, da affiancare al count dei progetti x manager 
+(misura/colonna calcolata: da aggiungere ad ogni tabella dei fatti (hot, cold ed aggregata sulla hot) -> ricavi - costi) ;
+Data la divisione, visualizzare i costi totali in base a questa (e filtri per visualizzare i vari range di guadagno); 
 
 
 SUM
@@ -59,4 +66,4 @@ GROUP BY
 3. somma dei ricavi per Project (periodo meno recente "COLD)
 
 
-DRILL THROUGH
+
