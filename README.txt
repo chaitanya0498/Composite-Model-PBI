@@ -33,8 +33,6 @@ Create visualisations on original DB, take screenshots
 Create visualisations on our new structure, take screenshots
 Compare screenshots (performance analyzer)
 
-
-
 VISUALIZZAZIONI
 
 (sicuramente)
