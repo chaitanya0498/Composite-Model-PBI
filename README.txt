@@ -35,6 +35,16 @@ Compare screenshots (performance analyzer)
 
 VISUALIZZAZIONI
 
+# Dim Projet Column IQP
+
+Pg 1
+Totale per anno
+Filtro (anno, mese)
+Drill di un particolare anno, mese -> raggruppato per IQP, o Progetto 
+
+dashboard 1 - all data from HOT IMport
+2 - maximum detailed view
+
 (sicuramente)
 Guadagno per progetto (bisogna poterlo visualizzare in base a mese ed anno con filtri);
 Ogni project manager a quanti progetti è associato (count), inserire drill-through per vedere nello specifico i progetti associati ad uno specifico project manager; 
