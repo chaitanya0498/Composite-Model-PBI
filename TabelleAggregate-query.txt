@@ -75,6 +75,24 @@ datefromparts(B.Anno, B.Mese, 1) < GETDATE() - 120
 group by P.iqp
 
 
+TABELLA AGGREGATA DATI COLD RAGGRUPPATA PER IQP E SK_PROJECT
+SELECT   P.iqp, P.SK_project, COUNT(P.ProjectName) as Projectcount,
+SUM(A.costAmount) AS Costo ,SUM(A.revenueAmount) AS Ricavo
+
+FROM L2_F_HR_sperimentazione_PBI AS A    
+
+INNER JOIN L2_Alten_D_Tempo AS B      
+ON  A.SK_Data = B.SK_Data      
+ 
+  INNER JOIN L2_Alten_D_Projects AS P      
+ON  A.SK_Project = P.SK_Project    
+
+WHERE                 
+datefromparts(B.Anno, B.Mese, 1) < GETDATE() - 120 
+
+
+group by P.iqp, P.SK_project
+
 
 
 
