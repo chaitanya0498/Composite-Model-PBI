@@ -13,7 +13,6 @@ PRE-REQUISITI
 3. Add Relations with DIM Tables
 4. Create Calculated Column for DATE (because DB doesn't have DATE) in TIME DIM TABLE
 
-
 = 2 FACT TABLES (COLD + HOT) and 4 DIM Tables (All in DIRECT QUERY)
 
 + (optional) 1 Table for storing MEASURES (for queries that take data from both Fact Tables HOT + COLD)
