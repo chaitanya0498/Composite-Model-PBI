@@ -52,14 +52,7 @@ WHERE                
 datefromparts(B.Anno, B.Mese, 1) < GETDATE() - 120
 
 
-
-
-
 Tabella 'HOT' aggregata per PROJECT -- si potrebbe fare su PowerBI 
-
-
-
-
 
 
 Tabella 'COLD' aggregata per PROJECT
