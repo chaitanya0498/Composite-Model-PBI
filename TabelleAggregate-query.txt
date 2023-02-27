@@ -58,6 +58,10 @@ datefromparts(B.Anno, B.Mese, 1) < GETDATE() - 120
 Tabella 'HOT' aggregata per PROJECT -- si potrebbe fare su PowerBI 
 
 
+
+
+
+
 Tabella 'COLD' aggregata per PROJECT
 
 SELECT   A.SK_Project,  
@@ -68,5 +72,16 @@ ON  A.SK_Data = B.SK_Data      
  WHERE                 
 datefromparts(B.Anno, B.Mese, 1) <= GETDATE() - 120 
 group by A.SK_Project 
+
+
+
+
+
+
+
+
+
+
+
 
 
