@@ -94,6 +94,23 @@ datefromparts(B.Anno, B.Mese, 1) < GETDATE() - 120
 group by P.iqp, P.SK_project
 
 
+DA RIVEDERE:
+Tentativo di velocizzare il filtro del tempo tramite aggregazione (di seguito la query utilizzata)
+
+SELECT	
+       L2_Alten_D_Tempo.[SK_Data], 
+	   L2_Alten_D_Tempo.Anno,
+	   L2_Alten_D_Tempo.Mese,
+	   L2_F_HR_sperimentazione_PBI.[SK_project]
+
+FROM L2_F_HR_sperimentazione_PBI, L2_Alten_D_Tempo  
+
+WHERE                 
+datefromparts(Anno, Mese, 1) < GETDATE() - 120 
+AND L2_F_HR_sperimentazione_PBI.SK_Data = L2_Alten_D_Tempo.SK_Data
+
+
+group by  L2_Alten_D_Tempo.[SK_Data], L2_Alten_D_Tempo.Anno, L2_Alten_D_Tempo.Mese, L2_F_HR_sperimentazione_PBI.[SK_project]
 
 
 
