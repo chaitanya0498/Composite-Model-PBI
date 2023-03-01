@@ -52,32 +52,89 @@ WHERE                
 datefromparts(B.Anno, B.Mese, 1) < GETDATE() - 120
 
 
-
-
-
 Tabella 'HOT' aggregata per PROJECT -- si potrebbe fare su PowerBI 
-
-
-
-
 
 
 Tabella 'COLD' aggregata per PROJECT
 
-SELECT   A.SK_Project,  
+SELECT   P.iqp, COUNT(P.ProjectName) as Projectcount,
 SUM(A.costAmount) AS Costo ,SUM(A.revenueAmount) AS Ricavo
-FROM L2_Alten_F_HR AS A    
+
+FROM L2_F_HR_sperimentazione_PBI AS A    
+
 INNER JOIN L2_Alten_D_Tempo AS B      
 ON  A.SK_Data = B.SK_Data      
- WHERE                 
-datefromparts(B.Anno, B.Mese, 1) <= GETDATE() - 120 
-group by A.SK_Project 
+ 
+  INNER JOIN L2_Alten_D_Projects AS P      
+ON  A.SK_Project = P.SK_Project    
+
+WHERE                 
+datefromparts(B.Anno, B.Mese, 1) < GETDATE() - 120 
 
 
+group by P.iqp
 
 
+TABELLA AGGREGATA DATI COLD RAGGRUPPATA PER IQP E SK_PROJECT
+SELECT   P.iqp, P.SK_project, COUNT(P.ProjectName) as Projectcount,
+SUM(A.costAmount) AS Costo ,SUM(A.revenueAmount) AS Ricavo
+
+FROM L2_F_HR_sperimentazione_PBI AS A    
+
+INNER JOIN L2_Alten_D_Tempo AS B      
+ON  A.SK_Data = B.SK_Data      
+ 
+  INNER JOIN L2_Alten_D_Projects AS P      
+ON  A.SK_Project = P.SK_Project    
+
+WHERE                 
+datefromparts(B.Anno, B.Mese, 1) < GETDATE() - 120 
 
 
+group by P.iqp, P.SK_project
+
+
+DA RIVEDERE:
+Tentativo di velocizzare il filtro del tempo tramite aggregazione (di seguito la query utilizzata)
+
+SELECT	
+       L2_Alten_D_Tempo.[SK_Data], 
+	   L2_Alten_D_Tempo.Anno,
+	   L2_Alten_D_Tempo.Mese,
+	   L2_F_HR_sperimentazione_PBI.[SK_project]
+
+FROM L2_F_HR_sperimentazione_PBI, L2_Alten_D_Tempo  
+
+WHERE                 
+datefromparts(Anno, Mese, 1) < GETDATE() - 120 
+AND L2_F_HR_sperimentazione_PBI.SK_Data = L2_Alten_D_Tempo.SK_Data
+
+
+group by  L2_Alten_D_Tempo.[SK_Data], L2_Alten_D_Tempo.Anno, L2_Alten_D_Tempo.Mese, L2_F_HR_sperimentazione_PBI.[SK_project]
+
+
+01-03-2022
+1. 
+SELECT    A.SK_Data, B.Anno,B.Mese,A.SK_Project, P.Iqp 
+FROM L2_F_HR_sperimentazione_PBI AS A    
+INNER JOIN L2_Alten_D_Tempo AS B      
+ON  A.SK_Data = B.SK_Data      
+
+INNER JOIN L2_Alten_D_Projects AS P      
+ON  A.SK_Project = P.SK_Project    
+
+
+group by A.SK_Data,B.Anno,B.Mese, A.SK_Project, P.Iqp
+
+2. SELECT A.SK_project, P.Iqp, P.ProjectName
+     
+FROM L2_F_HR_sperimentazione_PBI AS A    
+  
+INNER JOIN L2_Alten_D_Projects AS P      
+ON  A.SK_Project = P.SK_Project    
+
+
+group by A.SK_project, P.Iqp, P.ProjectName
 
 
 
