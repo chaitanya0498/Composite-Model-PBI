@@ -113,6 +113,28 @@ AND L2_F_HR_sperimentazione_PBI.SK_Data = L2_Alten_D_Tempo.SK_Data
 group by  L2_Alten_D_Tempo.[SK_Data], L2_Alten_D_Tempo.Anno, L2_Alten_D_Tempo.Mese, L2_F_HR_sperimentazione_PBI.[SK_project]
 
 
+01-03-2022
+1. 
+SELECT    A.SK_Data, B.Anno,B.Mese,A.SK_Project, P.Iqp 
+FROM L2_F_HR_sperimentazione_PBI AS A    
+INNER JOIN L2_Alten_D_Tempo AS B      
+ON  A.SK_Data = B.SK_Data      
+
+INNER JOIN L2_Alten_D_Projects AS P      
+ON  A.SK_Project = P.SK_Project    
+
+
+group by A.SK_Data,B.Anno,B.Mese, A.SK_Project, P.Iqp
+
+2. SELECT A.SK_project, P.Iqp, P.ProjectName
+     
+FROM L2_F_HR_sperimentazione_PBI AS A    
+  
+INNER JOIN L2_Alten_D_Projects AS P      
+ON  A.SK_Project = P.SK_Project    
+
+
+group by A.SK_project, P.Iqp, P.ProjectName
 
 
 
